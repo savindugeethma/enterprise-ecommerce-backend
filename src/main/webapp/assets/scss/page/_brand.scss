@@ -1,0 +1,65 @@
+/*--
+/*  4.10 - Brand CSS
+/*----------------------------------------*/
+
+// Brand Row 
+.brand-row{
+    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    justify-self: center;
+
+    @media #{$large-mobile}{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    @media #{$small-mobile}{
+        grid-template-columns: 1fr 1fr;
+    }
+
+    & .brand-col{
+        & .single-brand{
+            margin-left: -1px;
+
+            @media #{$large-mobile}{
+                margin-top: -1px;
+            }
+        }
+    }
+}
+
+// Single Brand 
+.single-brand{
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e1e1e1;
+    padding: 20px;
+
+    @media #{$tablet-device, $large-mobile}{
+        height: 150px;
+    }
+}
+
+// Brand Logo
+.brand-logo{
+    background-color: $primary;
+    padding: 50px 0;
+}
+
+// Single Brand 02
+.single-brand-02{
+    text-align: center;
+
+    & img{
+        opacity: 0.5;
+        transition: $transition-base;
+    }
+
+    &:hover{
+        & img{
+            opacity: 1;
+        }
+    }
+}
+

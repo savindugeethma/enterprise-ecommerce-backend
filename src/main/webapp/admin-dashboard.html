@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Admin Dashboard - Furbar Furniture eCommerce</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png" />
+
+    <!-- CSS
+	============================================ -->
+
+    <!-- Icon Font CSS -->
+    <link rel="stylesheet" href="assets/css/plugins/pe-icon-7-stroke.css" />
+    <link rel="stylesheet" href="assets/css/plugins/font-awesome.min.css" />
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="assets/css/plugins/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/plugins/animate.min.css" />
+    <link rel="stylesheet" href="assets/css/plugins/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="assets/css/plugins/odometer.min.css" />
+    <link rel="stylesheet" href="assets/css/plugins/select2.min.css" />
+    <link rel="stylesheet" href="assets/css/plugins/ion.rangeSlider.min.css" />
+
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="assets/css/style.min.css" />
+
+    <style>
+        /* Custom Admin Dashboard Styles */
+        .my-account-menu .menu-header {
+            font-family: "Rajdhani", sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 15px 20px 10px;
+            border-top: 1px solid #eee;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .stat-card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 0px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+            text-decoration: none !important;
+            color: inherit !important;
+            margin-bottom: 20px;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-color: #f2a100;
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .stat-content .stat-number {
+            display: block;
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+            line-height: 1;
+            margin-bottom: 5px;
+            font-family: "Rajdhani", sans-serif;
+        }
+
+        .stat-content .stat-label {
+            display: block;
+            font-size: 13px;
+            color: #777;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        .admin-wrapper {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 0px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .admin-title {
+            font-family: "Rajdhani", sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            border-bottom: 2px solid #f2a100;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .table thead th {
+            background-color: #f8f9fa;
+            font-family: "Rajdhani", sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-status {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .bg-pending {
+            background-color: #ffc107;
+            color: #000;
+        }
+
+        .bg-completed {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .bg-cancelled {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+        /* --- PURE CSS FORM STYLING --- */
+        .admin-form-label {
+            font-family: "Rajdhani", sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 13px;
+            color: #333;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .admin-form-input {
+            border-radius: 0px !important;
+            border: 1px solid #e0e0e0;
+            padding: 10px 15px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .admin-form-input:focus {
+            border-color: #f2a100;
+            box-shadow: 0 0 0 0.2rem rgba(242, 161, 0, 0.15);
+            outline: 0;
+        }
+
+        .custom-switch .form-check-input {
+            cursor: pointer;
+            border-radius: 20px !important;
+            height: 24px;
+            width: 48px;
+            border-color: #ccc;
+        }
+
+        .custom-switch .form-check-input:checked {
+            background-color: #f2a100;
+            border-color: #f2a100;
+        }
+
+        /* --- PURE CSS MODAL OVERLAY --- */
+        #pure-modal-toggle {
+            display: none !important;
+        }
+
+        .pure-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        #pure-modal-toggle:checked ~ .pure-modal-overlay {
+            display: flex;
+        }
+
+        .pure-modal-box {
+            background: #fff;
+            width: 100%;
+            max-width: 800px;
+            border: 1px solid #f2a100;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: pureModalSlideIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.2);
+            display: flex;
+            flex-direction: column;
+            max-height: 90vh;
+        }
+
+        @keyframes pureModalSlideIn {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .pure-modal-header {
+            padding: 20px 30px;
+            border-bottom: 1px solid #eee;
+            background: #f8f9fa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pure-modal-header h5 {
+            margin: 0;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #333;
+            letter-spacing: 0.5px;
+        }
+
+        .pure-modal-close-label {
+            cursor: pointer;
+            font-size: 24px;
+            font-weight: bold;
+            color: #777;
+            line-height: 1;
+            user-select: none;
+            transition: color 0.2s ease;
+        }
+
+        .pure-modal-close-label:hover { color: #f2a100; }
+        .pure-modal-body { padding: 30px; overflow-y: auto; }
+        .pure-modal-footer {
+            padding: 20px 30px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            background: #f8f9fa;
+        }
+
+        .image-preview-container {
+            width: 100%;
+            height: 120px;
+            border: 1px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fafafa;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-preview-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        /* --- PURE CSS CONDITIONAL WEIGHT --- */
+        #pure-is-heavy { cursor: pointer; }
+        .pure-conditional-weight {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
+        }
+        #pure-is-heavy:checked ~ .pure-conditional-weight {
+            max-height: 100px;
+            opacity: 1;
+            margin-top: 15px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<input type="checkbox" id="pure-modal-toggle">
+
+<!-- Header Start  -->
+<div class="header-area header-sticky d-none d-lg-block">
+    <div class="container position-relative">
+        <div class="row align-items-center">
+            <div class="col-lg-3">
+                <div class="header-logo">
+                    <a href="index.html"><img src="assets/images/logo.png" width="154" height="46" alt="Logo" /></a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <h3 style="font-family: 'Rajdhani', sans-serif; font-weight: 700; margin: 0; color: #f2a100;">ADMIN
+                    PANEL</h3>
+            </div>
+            <div class="col-lg-3">
+                <div class="header-meta">
+                    <div class="dropdown">
+                        <a class="action" href="#" role="button" data-bs-toggle="dropdown"><i
+                                class="pe-7s-user"></i></a>
+                        <ul class="dropdown-menu dropdown-profile">
+                            <li><a href="index.html">View Site</a></li>
+                            <li><a href="Admin_login.html">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+
+<!-- Page Banner Section Start -->
+<div class="section page-banner-section" style="background-image: url(assets/images/new_banner1.png)">
+    <div class="container">
+        <div class="page-banner-content">
+            <h2 class="title" style="color: #f2a100;">Admin Dashboard</h2>
+            <ul class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li class="active">Dashboard</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Page Banner Section End -->
+
+<!-- Admin Dashboard Section Start -->
+<div class="section section-padding">
+    <div class="container">
+        <div class="row gy-4">
+            <div class="col-xl-3 col-md-4">
+                <div class="my-account-menu">
+                    <ul class="nav account-menu-list flex-column">
+                        <li><span class="menu-header">Main Menu</span></li>
+                        <li><a class="active" data-bs-toggle="pill" href="#pills-dashboard"><i
+                                class="fa fa-tachometer"></i> Overview</a></li>
+                        <li><a data-bs-toggle="pill" onclick="loadProducts()" href="#pills-products"><i class="fa fa-cubes"></i> Products</a>
+                        </li>
+                        <li><a data-bs-toggle="pill" href="#pills-orders"><i class="fa fa-shopping-cart"></i>
+                            Orders</a></li>
+
+                        <li><span class="menu-header">Administration</span></li>
+                        <li><a data-bs-toggle="pill" href="#pills-customers"><i class="fa fa-users"></i>
+                            Customers</a></li>
+                        <li><a data-bs-toggle="pill" href="#pills-reports"><i class="fa fa-bar-chart"></i>
+                            Reports</a></li>
+                        <li><a data-bs-toggle="pill" href="#pills-settings"><i class="fa fa-cog"></i> Settings</a>
+                        </li>
+
+                        <li class="mt-3"><a href="Admin_login.html" class="text-danger"><i
+                                class="fa fa-sign-out"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xl-9 col-md-8">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="pills-dashboard">
+                        <div class="admin-wrapper">
+                            <h4 class="admin-title">Overview</h4>
+                            <div class="row g-4">
+                                <div class="col-sm-6 col-lg-4">
+                                    <div class="stat-card">
+                                        <div class="stat-icon" style="background: rgba(242, 161, 0, 0.1); color: #f2a100;">
+                                            <i class="fa fa-usd"></i>
+                                        </div>
+                                        <div class="stat-content">
+                                            <span class="stat-number" id="admin-total-revenue">$0.00</span>
+                                            <span class="stat-label">Total Revenue</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-4">
+                                    <div class="stat-card">
+                                        <div class="stat-icon" style="background: rgba(40, 167, 69, 0.1); color: #28a745;">
+                                            <i class="fa fa-shopping-bag"></i>
+                                        </div>
+                                        <div class="stat-content">
+                                            <span class="stat-number" id="admin-total-orders">0</span>
+                                            <span class="stat-label">Total Orders</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-4">
+                                    <div class="stat-card">
+                                        <div class="stat-icon" style="background: rgba(0, 123, 255, 0.1); color: #007bff;">
+                                            <i class="fa fa-users"></i>
+                                        </div>
+                                        <div class="stat-content">
+                                            <span class="stat-number" id="admin-total-customers">0</span>
+                                            <span class="stat-label">Customers</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-5">
+                                <h5 class="mb-3" style="font-family: 'Rajdhani', sans-serif; font-weight: 700;">Recent Orders</h5>
+                                <div class="table-responsive">
+                                    <table class="table align-middle">
+                                        <thead>
+                                        <tr>
+                                            <th>Order ID</th>
+                                            <th>Customer</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
+                                            <th>Total</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="admin-recent-orders-table-body"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="pills-products">
+                        <div class="admin-wrapper">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h4 class="admin-title mb-0">Products Management</h4>
+<!--                                <button class="btn btn-primary" style="background-color: #f2a100; border: none; border-radius: 0px;" onclick="openAddProductModal()">-->
+<!--                                    <i class="fa fa-plus"></i> Add New Product-->
+<!--                                </button>-->
+                                <label for="pure-modal-toggle" class="btn btn-primary" style="cursor: pointer; background-color: #f2a100; border: none; border-radius: 0px; display: inline-flex; align-items: center; padding: 10px 20px; font-family: 'Rajdhani', sans-serif; font-weight: 700; text-transform: uppercase; color: #fff;">
+                                    <i class="fa fa-plus" style="margin-right: 8px;"></i> Add New Product
+                                </label>
+
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table align-middle">
+                                    <thead>
+                                    <tr>
+                                        <th>Product ID</th>
+                                        <th>Product Name</th>
+                                        <th>Price</th>
+                                        <th>Stock</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="seller-products-table-body"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="pills-customers">
+                        <div class="admin-wrapper">
+                            <h4 class="admin-title">Customers Overview</h4>
+                            <div class="table-responsive">
+                                <table class="table align-middle">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Email Address</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="seller-customers-table-body"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+<!--                    &lt;!&ndash; Dashboard Overview &ndash;&gt;-->
+<!--                    <div class="tab-pane fade show active" id="pills-dashboard">-->
+<!--                        <div class="admin-wrapper">-->
+<!--                            <h4 class="admin-title">Overview</h4>-->
+<!--                            <div class="row g-4">-->
+<!--                                <div class="col-sm-6 col-lg-4">-->
+<!--                                    <div class="stat-card">-->
+<!--                                        <div class="stat-icon"-->
+<!--                                             style="background: rgba(242, 161, 0, 0.1); color: #f2a100;">-->
+<!--                                            <i class="fa fa-usd"></i>-->
+<!--                                        </div>-->
+<!--                                        <div class="stat-content">-->
+<!--                                            <span class="stat-number">$45,230</span>-->
+<!--                                            <span class="stat-label">Total Revenue</span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-sm-6 col-lg-4">-->
+<!--                                    <div class="stat-card">-->
+<!--                                        <div class="stat-icon"-->
+<!--                                             style="background: rgba(40, 167, 69, 0.1); color: #28a745;">-->
+<!--                                            <i class="fa fa-shopping-bag"></i>-->
+<!--                                        </div>-->
+<!--                                        <div class="stat-content">-->
+<!--                                            <span class="stat-number">1,240</span>-->
+<!--                                            <span class="stat-label">Total Orders</span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-sm-6 col-lg-4">-->
+<!--                                    <div class="stat-card">-->
+<!--                                        <div class="stat-icon"-->
+<!--                                             style="background: rgba(0, 123, 255, 0.1); color: #007bff;">-->
+<!--                                            <i class="fa fa-users"></i>-->
+<!--                                        </div>-->
+<!--                                        <div class="stat-content">-->
+<!--                                            <span class="stat-number">850</span>-->
+<!--                                            <span class="stat-label">Customers</span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                            <div class="mt-5">-->
+<!--                                <h5 class="mb-3" style="font-family: 'Rajdhani', sans-serif; font-weight: 700;">-->
+<!--                                    Recent Orders</h5>-->
+<!--                                <div class="table-responsive">-->
+<!--                                    <table class="table align-middle">-->
+<!--                                        <thead>-->
+<!--                                        <tr>-->
+<!--                                            <th>Order ID</th>-->
+<!--                                            <th>Customer</th>-->
+<!--                                            <th>Date</th>-->
+<!--                                            <th>Status</th>-->
+<!--                                            <th>Total</th>-->
+<!--                                            <th>Action</th>-->
+<!--                                        </tr>-->
+<!--                                        </thead>-->
+<!--                                        <tbody>-->
+<!--                                        <tr>-->
+<!--                                            <td>#ORD-7845</td>-->
+<!--                                            <td>John Smith</td>-->
+<!--                                            <td>Oct 12, 2023</td>-->
+<!--                                            <td><span class="badge-status bg-completed">Completed</span></td>-->
+<!--                                            <td>$450.00</td>-->
+<!--                                            <td><a href="#" class="btn btn-sm btn-outline-dark">Details</a></td>-->
+<!--                                        </tr>-->
+<!--                                        <tr>-->
+<!--                                            <td>#ORD-7846</td>-->
+<!--                                            <td>Sarah Wilson</td>-->
+<!--                                            <td>Oct 13, 2023</td>-->
+<!--                                            <td><span class="badge-status bg-pending">Pending</span></td>-->
+<!--                                            <td>$120.00</td>-->
+<!--                                            <td><a href="#" class="btn btn-sm btn-outline-dark">Details</a></td>-->
+<!--                                        </tr>-->
+<!--                                        </tbody>-->
+<!--                                    </table>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    &lt;!&ndash; Add placeholders for other tabs to make it functional &ndash;&gt;-->
+<!--                    <div class="tab-pane fade" id="pills-products">-->
+<!--                        <div class="admin-wrapper">-->
+<!--                            <div class="d-flex justify-content-between align-items-center mb-4">-->
+<!--                                <h4 class="admin-title mb-0">Products Management</h4>-->
+<!--                                <button class="btn btn-primary"-->
+<!--                                        style="background-color: #f2a100; border: none; border-radius: 0px;"><i-->
+<!--                                        class="fa fa-plus"></i> Add New Product</button>-->
+<!--                            </div>-->
+<!--                            <div class="table-responsive">-->
+<!--                                <table class="table align-middle">-->
+<!--                                    <thead>-->
+<!--                                    <tr>-->
+<!--                                        <th>Image</th>-->
+<!--                                        <th>Product Name</th>-->
+<!--                                        <th>Category</th>-->
+<!--                                        <th>Price</th>-->
+<!--                                        <th>Stock</th>-->
+<!--                                        <th>Action</th>-->
+<!--                                    </tr>-->
+<!--                                    </thead>-->
+<!--                                    <tbody>-->
+<!--                                    <tr>-->
+<!--                                        <td><img src="assets/images/product/product-1.jpg" width="50" alt="">-->
+<!--                                        </td>-->
+<!--                                        <td>Modern Living Chair</td>-->
+<!--                                        <td>Furniture</td>-->
+<!--                                        <td>$120.00</td>-->
+<!--                                        <td>45 In Stock</td>-->
+<!--                                        <td>-->
+<!--                                            <a href="#" class="text-primary me-2"><i class="fa fa-edit"></i></a>-->
+<!--                                            <a href="#" class="text-danger"><i class="fa fa-trash"></i></a>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td><img src="assets/images/product/product-2.jpg" width="50" alt="">-->
+<!--                                        </td>-->
+<!--                                        <td>Herman Arm Chair</td>-->
+<!--                                        <td>Furniture</td>-->
+<!--                                        <td>$150.00</td>-->
+<!--                                        <td>12 In Stock</td>-->
+<!--                                        <td>-->
+<!--                                            <a href="#" class="text-primary me-2"><i class="fa fa-edit"></i></a>-->
+<!--                                            <a href="#" class="text-danger"><i class="fa fa-trash"></i></a>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                    </tbody>-->
+<!--                                </table>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    &lt;!&ndash; Orders Management &ndash;&gt;-->
+<!--                    <div class="tab-pane fade" id="pills-orders">-->
+<!--                        <div class="admin-wrapper">-->
+<!--                            <h4 class="admin-title">Orders Management</h4>-->
+<!--                            <div class="table-responsive">-->
+<!--                                <table class="table align-middle text-center">-->
+<!--                                    <thead>-->
+<!--                                    <tr>-->
+<!--                                        <th>Order ID</th>-->
+<!--                                        <th>Customer Name</th>-->
+<!--                                        <th>Date</th>-->
+<!--                                        <th>Status</th>-->
+<!--                                        <th>Total Amount</th>-->
+<!--                                        <th>Action</th>-->
+<!--                                    </tr>-->
+<!--                                    </thead>-->
+<!--                                    <tbody>-->
+<!--                                    <tr>-->
+<!--                                        <td>#ORD-7845</td>-->
+<!--                                        <td>John Smith</td>-->
+<!--                                        <td>Oct 12, 2023</td>-->
+<!--                                        <td><span class="badge-status bg-completed">Completed</span></td>-->
+<!--                                        <td>$450.00</td>-->
+<!--                                        <td>-->
+<!--                                            <a href="#" class="btn btn-sm btn-dark"-->
+<!--                                               style="border-radius: 0px;">View</a>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td>#ORD-7846</td>-->
+<!--                                        <td>Sarah Wilson</td>-->
+<!--                                        <td>Oct 13, 2023</td>-->
+<!--                                        <td><span class="badge-status bg-pending">Pending</span></td>-->
+<!--                                        <td>$120.00</td>-->
+<!--                                        <td>-->
+<!--                                            <a href="#" class="btn btn-sm btn-dark"-->
+<!--                                               style="border-radius: 0px;">View</a>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td>#ORD-7847</td>-->
+<!--                                        <td>Michael Ross</td>-->
+<!--                                        <td>Oct 14, 2023</td>-->
+<!--                                        <td><span class="badge-status bg-cancelled">Cancelled</span></td>-->
+<!--                                        <td>$85.00</td>-->
+<!--                                        <td>-->
+<!--                                            <a href="#" class="btn btn-sm btn-dark"-->
+<!--                                               style="border-radius: 0px;">View</a>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                    </tbody>-->
+<!--                                </table>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    &lt;!&ndash; Customers Management &ndash;&gt;-->
+<!--                    <div class="tab-pane fade" id="pills-customers">-->
+<!--                        <div class="admin-wrapper">-->
+<!--                            <h4 class="admin-title">Customers Overview</h4>-->
+<!--                            <div class="table-responsive">-->
+<!--                                <table class="table align-middle">-->
+<!--                                    <thead>-->
+<!--                                    <tr>-->
+<!--                                        <th>ID</th>-->
+<!--                                        <th>Name</th>-->
+<!--                                        <th>Email</th>-->
+<!--                                        <th>Orders</th>-->
+<!--                                        <th>Status</th>-->
+<!--                                        <th>Action</th>-->
+<!--                                    </tr>-->
+<!--                                    </thead>-->
+<!--                                    <tbody>-->
+<!--                                    <tr>-->
+<!--                                        <td>#CUST-101</td>-->
+<!--                                        <td><strong>John Smith</strong></td>-->
+<!--                                        <td>john@example.com</td>-->
+<!--                                        <td>12</td>-->
+<!--                                        <td><span class="text-success"><i class="fa fa-circle"></i>-->
+<!--                                                        Active</span></td>-->
+<!--                                        <td>-->
+<!--                                            <a href="#" class="text-primary me-2"><i class="fa fa-edit"></i></a>-->
+<!--                                            <a href="#" class="text-danger"><i class="fa fa-ban"></i></a>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td>#CUST-102</td>-->
+<!--                                        <td><strong>Sarah Wilson</strong></td>-->
+<!--                                        <td>sarah@example.com</td>-->
+<!--                                        <td>05</td>-->
+<!--                                        <td><span class="text-success"><i class="fa fa-circle"></i>-->
+<!--                                                        Active</span></td>-->
+<!--                                        <td>-->
+<!--                                            <a href="#" class="text-primary me-2"><i class="fa fa-edit"></i></a>-->
+<!--                                            <a href="#" class="text-danger"><i class="fa fa-ban"></i></a>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td>#CUST-103</td>-->
+<!--                                        <td><strong>Donna Paulsen</strong></td>-->
+<!--                                        <td>donna@example.com</td>-->
+<!--                                        <td>00</td>-->
+<!--                                        <td><span class="text-muted"><i class="fa fa-circle-o"></i>-->
+<!--                                                        Inactive</span></td>-->
+<!--                                        <td>-->
+<!--                                            <a href="#" class="text-primary me-2"><i class="fa fa-edit"></i></a>-->
+<!--                                            <a href="#" class="text-danger"><i class="fa fa-ban"></i></a>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                    </tbody>-->
+<!--                                </table>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+                    <!-- Reports Tab -->
+<!--                    <div class="tab-pane fade" id="pills-reports">-->
+<!--                        <div class="admin-wrapper">-->
+<!--                            <h4 class="admin-title">Performance Reports</h4>-->
+<!--                            <div class="row g-4 mb-5">-->
+<!--                                <div class="col-md-6 col-lg-4">-->
+<!--                                    <div class="p-4 border text-center">-->
+<!--                                        <h6 class="text-uppercase text-muted mb-2"-->
+<!--                                            style="font-size: 12px; letter-spacing: 1px;">Monthly Revenue</h6>-->
+<!--                                        <h3-->
+<!--                                                style="font-family: 'Rajdhani', sans-serif; font-weight: 700; color: #f2a100;">-->
+<!--                                            $12,450.00</h3>-->
+<!--                                        <small class="text-success fw-bold">+15% from last month</small>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-6 col-lg-4">-->
+<!--                                    <div class="p-4 border text-center">-->
+<!--                                        <h6 class="text-uppercase text-muted mb-2"-->
+<!--                                            style="font-size: 12px; letter-spacing: 1px;">Conversion Rate</h6>-->
+<!--                                        <h3 style="font-family: 'Rajdhani', sans-serif; font-weight: 700;">3.85%-->
+<!--                                        </h3>-->
+<!--                                        <small class="text-danger fw-bold">-2% from last month</small>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-6 col-lg-4">-->
+<!--                                    <div class="p-4 border text-center">-->
+<!--                                        <h6 class="text-uppercase text-muted mb-2"-->
+<!--                                            style="font-size: 12px; letter-spacing: 1px;">Avg. Order Value</h6>-->
+<!--                                        <h3 style="font-family: 'Rajdhani', sans-serif; font-weight: 700;">$98.50-->
+<!--                                        </h3>-->
+<!--                                        <small class="text-success fw-bold">+5% from last month</small>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                            <h5 class="mb-3" style="font-family: 'Rajdhani', sans-serif; font-weight: 700;">Top-->
+<!--                                Selling Products</h5>-->
+<!--                            <div class="table-responsive">-->
+<!--                                <table class="table align-middle">-->
+<!--                                    <thead>-->
+<!--                                    <tr>-->
+<!--                                        <th>Rank</th>-->
+<!--                                        <th>Product</th>-->
+<!--                                        <th>Category</th>-->
+<!--                                        <th>Sales Count</th>-->
+<!--                                        <th>Earnings</th>-->
+<!--                                    </tr>-->
+<!--                                    </thead>-->
+<!--                                    <tbody>-->
+<!--                                    <tr>-->
+<!--                                        <td>1</td>-->
+<!--                                        <td><strong>Modern Living Chair</strong></td>-->
+<!--                                        <td>Furniture</td>-->
+<!--                                        <td>145</td>-->
+<!--                                        <td>$17,400.00</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td>2</td>-->
+<!--                                        <td><strong>Bottle Vase White</strong></td>-->
+<!--                                        <td>Decoration</td>-->
+<!--                                        <td>98</td>-->
+<!--                                        <td>$2,450.00</td>-->
+<!--                                    </tr>-->
+<!--                                    </tbody>-->
+<!--                                </table>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+                    <div class="tab-pane fade" id="pills-reports">
+                        <div class="admin-wrapper">
+                            <h4 class="admin-title mb-4">Performance Reports Hub</h4>
+
+                            <div class="row g-4">
+                                <!-- Card 1: Sales Performance -->
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="card h-100 report-hub-card shadow-sm">
+                                        <div class="card-body p-4 d-flex flex-column" style="height: 100%;">
+                                            <div class="d-flex align-items-center mb-3">
+                                                <div class="stat-icon" style="background: rgba(242, 161, 0, 0.1); color: #f2a100; margin-right: 15px; width: 50px; height: 50px; border-radius: 0px; display: inline-flex; align-items: center; justify-content: center; font-size: 20px;">
+                                                    <i class="fa fa-line-chart"></i>
+                                                </div>
+                                                <h5 class="card-title mb-0" style="font-family: 'Rajdhani', sans-serif; font-weight: 700; text-transform: uppercase; font-size: 16px; letter-spacing: 0.5px;">Sales Performance</h5>
+                                            </div>
+                                            <p class="card-text text-muted mb-4" style="font-size: 13px; line-height: 1.5; flex-grow: 1;">Track monthly revenue, conversion rates, average order values, and completed transactions logs.</p>
+                                            <div class="mt-auto border-top pt-3">
+                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                                    <span class="text-uppercase text-muted fw-bold" style="font-size: 10px; letter-spacing: 0.5px;">Monthly Revenue</span>
+                                                    <span style="font-family: 'Rajdhani', sans-serif; font-weight: 700; color: #f2a100; font-size: 16px;">$12,450.00</span>
+                                                </div>
+                                                <a  href="admin_report.html" target="_blank" class="btn btn-primary w-100" style="font-family: 'Rajdhani', sans-serif; font-weight: 700; text-transform: uppercase; padding: 10px; font-size: 12px; letter-spacing: 0.5px; color: #fff; text-align: center;"><i class="fa fa-file-pdf-o me-2"></i> Open Sales PDF</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Card 2: Inventory Catalog -->
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="card h-100 report-hub-card shadow-sm">
+                                        <div class="card-body p-4 d-flex flex-column" style="height: 100%;">
+                                            <div class="d-flex align-items-center mb-3">
+                                                <div class="stat-icon" style="background: rgba(40, 167, 69, 0.1); color: #28a745; margin-right: 15px; width: 50px; height: 50px; border-radius: 0px; display: inline-flex; align-items: center; justify-content: center; font-size: 20px;">
+                                                    <i class="fa fa-cubes"></i>
+                                                </div>
+                                                <h5 class="card-title mb-0" style="font-family: 'Rajdhani', sans-serif; font-weight: 700; text-transform: uppercase; font-size: 16px; letter-spacing: 0.5px;">Inventory & Stock</h5>
+                                            </div>
+                                            <p class="card-text text-muted mb-4" style="font-size: 13px; line-height: 1.5; flex-grow: 1;">Monitor current stock levels, catalog pricing, total warehouse asset valuations, and low-stock alerts.</p>
+                                            <div class="mt-auto border-top pt-3">
+                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                                    <span class="text-uppercase text-muted fw-bold" style="font-size: 10px; letter-spacing: 0.5px;">Asset Valuation</span>
+                                                    <span style="font-family: 'Rajdhani', sans-serif; font-weight: 700; color: #28a745; font-size: 16px;">$24,850.00</span>
+                                                </div>
+                                                <a onclick="logSellerProducts()" href="admin_products_report.html" target="_blank" class="btn btn-primary w-100" style="font-family: 'Rajdhani', sans-serif; font-weight: 700; text-transform: uppercase; padding: 10px; font-size: 12px; letter-spacing: 0.5px; color: #fff; text-align: center;"><i class="fa fa-file-pdf-o me-2"></i> Open Inventory PDF</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Card 3: Customers & LTV -->
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="card h-100 report-hub-card shadow-sm">
+                                        <div class="card-body p-4 d-flex flex-column" style="height: 100%;">
+                                            <div class="d-flex align-items-center mb-3">
+                                                <div class="stat-icon" style="background: rgba(0, 123, 255, 0.1); color: #007bff; margin-right: 15px; width: 50px; height: 50px; border-radius: 0px; display: inline-flex; align-items: center; justify-content: center; font-size: 20px;">
+                                                    <i class="fa fa-users"></i>
+                                                </div>
+                                                <h5 class="card-title mb-0" style="font-family: 'Rajdhani', sans-serif; font-weight: 700; text-transform: uppercase; font-size: 16px; letter-spacing: 0.5px;">Customer Base & LTV</h5>
+                                            </div>
+                                            <p class="card-text text-muted mb-4" style="font-size: 13px; line-height: 1.5; flex-grow: 1;">Analyze user growth, monthly registrations, activity metrics, VIP tiers, and customer lifetime spent values.</p>
+                                            <div class="mt-auto border-top pt-3">
+                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                                    <span class="text-uppercase text-muted fw-bold" style="font-size: 10px; letter-spacing: 0.5px;">Total Customers</span>
+                                                    <span style="font-family: 'Rajdhani', sans-serif; font-weight: 700; color: #007bff; font-size: 16px;">850 Users</span>
+                                                </div>
+                                                <a onclick="loadSellerCustomers()" href="admin_customers_report.html" target="_blank" class="btn btn-primary w-100" style="font-family: 'Rajdhani', sans-serif; font-weight: 700; text-transform: uppercase; padding: 10px; font-size: 12px; letter-spacing: 0.5px; color: #fff; text-align: center;"><i class="fa fa-file-pdf-o me-2"></i> Open Customers PDF</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Admin Dashboard Section End -->
+
+<!-- Footer Section Start -->
+<div class="section footer-section">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-2 col-md-4">
+                    <div class="footer-logo">
+                        <a href="index.html"><img src="assets/images/logo.png" width="154" height="46"
+                                                  alt="Logo" /></a>
+                    </div>
+                </div>
+                <div class="col-xl-10 text-end">
+                    <p class="mt-3">&copy; 2026 Ninewoods Admin Panel. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Pure CSS Product Modal Overlay Start -->
+<div class="pure-modal-overlay">
+    <div class="pure-modal-box">
+        <div class="pure-modal-header">
+            <h5>Add / Edit Product</h5>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <label for="pure-modal-toggle" class="btn btn-secondary" style="height: 40px; padding: 0 20px; display: inline-flex; align-items: center; justify-content: center; border-radius: 0px; background-color: #333; border: none; font-family: 'Rajdhani', sans-serif; font-weight: 700; text-transform: uppercase; font-size: 13px; letter-spacing: 0.5px; color: #fff; cursor: pointer; margin-bottom: 0; line-height: 1; user-select: none;">Cancel</label>
+                <label onclick="addProduct()"  for="pure-modal-toggle" class="btn btn-primary" style="height: 40px; padding: 0 20px; display: inline-flex; align-items: center; justify-content: center; border-radius: 0px; background-color: #f2a100; border: none; font-family: 'Rajdhani', sans-serif; font-weight: 700; text-transform: uppercase; font-size: 13px; letter-spacing: 0.5px; color: #fff; cursor: pointer; margin-bottom: 0; line-height: 1; user-select: none;">Save Product</label>
+                <label for="pure-modal-toggle" class="pure-modal-close-label" style="margin-left: 15px; display: inline-flex; align-items: center; justify-content: center; height: 40px; line-height: 1;">&times;</label>
+            </div>
+        </div>
+        <form action="#" onsubmit="return false;">
+            <div class="pure-modal-body">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="product-name" class="admin-form-label">Product Name</label>
+                        <input type="text" class="admin-form-input" id="product-name" required placeholder="e.g. Modern Living Chair">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="product-category" class="admin-form-label">Category</label>
+                        <select id="product-category" class="form-control">
+                            <option value="">Select Category</option>
+                            <option value="1">Tables & Desks</option>
+                            <option value="2">Chairs & Stools</option>
+                            <option value="3">Sofas & Couches</option>
+                            <option value="4">Beds & Mattresses</option>
+                            <option value="5">Storage & Wardrobes</option>
+                            <option value="6">Light & Lamps</option>
+                            <option value="7">Decorations & Crafts</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="product-price" class="admin-form-label">Price ($)</label>
+                        <input type="number" step="0.01" class="admin-form-input" id="product-price" required placeholder="0.00">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="product-stock-qty" class="admin-form-label">Stock Qty</label>
+                        <input type="number" class="admin-form-input" id="product-stock-qty" required placeholder="e.g. 45">
+                    </div>
+<!--                    <div class="col-md-4">-->
+<!--                        <label for="product-colour" class="admin-form-label">Colour</label>-->
+<!--                        <input type="text" class="admin-form-input" id="product-colour" placeholder="e.g. Amber Yellow">-->
+<!--                    </div>-->
+                    <div class="col-md-4">
+                        <label for="product-colour" class="admin-form-label">Colour</label>
+                        <select class="admin-form-input" id="product-colour" style="height: 40px;">
+                            <option value="">Select Colour</option>
+                            <option value="1">Black</option>
+                            <option value="2">Red</option>
+                            <option value="3">Gray</option>
+                            <option value="4">White</option>
+                            <option value="5">Mustard Yellow</option>
+                            <option value="6">Walnut Brown</option>
+                            <option value="7">Natural Oak</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="product-model" class="admin-form-label">Model</label>
+                        <input type="text" class="admin-form-input" id="product-model" placeholder="e.g. MLC-2023">
+                    </div>
+
+                    <!-- Pure CSS Conditional Weight Box -->
+                    <div class="col-md-6 mt-auto">
+                        <div class="border p-3" style="position: relative; background: #fafafa;">
+                            <div class="form-check form-switch custom-switch mb-0">
+                                <input class="form-check-input" type="checkbox" id="product-is-heavy">
+                                <label class="form-check-label admin-form-label mb-0 ms-2" for="product-is-heavy" style="user-select: none; cursor: pointer; display: inline-block;">Is Heavy Product?</label>
+                            </div>
+
+                            <div class="pure-conditional-weight">
+                                <label for="product-weight" class="admin-form-label mt-2">Weight (kg)</label>
+                                <input type="number" step="0.1" class="admin-form-input" id="product-weight" placeholder="e.g. 15.4">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dual Product Image Uploads (Side by Side) -->
+                    <div class="col-md-8">
+                        <div class="row g-2">
+                            <div class="col-md-6">
+                                <label class="admin-form-label">Product Image 1</label>9wood
+                                <input type="file" id="product-image-file-1" class="admin-form-input" accept="image/*" style="padding: 7px 15px;">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="admin-form-label">Product Image 2</label>
+                                <input type="file" id="product-image-file-2" class="admin-form-input" accept="image/*" style="padding: 7px 15px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dual Image Preview Cards (Side by Side) -->
+                    <div class="col-md-4">
+                        <label class="admin-form-label">Previews</label>
+                        <div class="d-flex gap-2">
+                            <div class="image-preview-container" style="flex: 1; height: 80px;">
+                                <img id="product-preview-img-1" src="assets/images/product/product-1.jpg" alt="Preview 1">
+                            </div>
+                            <div class="image-preview-container" style="flex: 1; height: 80px;">
+                                <img id="product-preview-img-2" src="assets/images/product/product-2.jpg" alt="Preview 2">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="product-description" class="admin-form-label">Description</label>
+                        <textarea class="admin-form-input" id="product-description" rows="3" placeholder="Enter detailed description..."></textarea>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Pure CSS Product Modal Overlay End -->
+
+<!-- Order Details Modal -->
+<div class="pure-modal-overlay" id="order-details-modal" style="display: none;">
+    <div class="pure-modal-box" style="max-width: 850px; width: 95%;">
+
+        <!-- Modal Header -->
+        <div class="pure-modal-header">
+            <div>
+                <h5 style="margin: 0; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 1.25rem;">
+                    Order Details <span id="modal-order-id" style="color: #f2a100;">#ORD-0000</span>
+                </h5>
+                <span id="modal-order-date" style="font-size: 11px; color: #888;">Placed on: --/--/----</span>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <button type="button" onclick="closeOrderModal()" class="btn btn-secondary" style="height: 40px; padding: 0 20px; display: inline-flex; align-items: center; justify-content: center; border-radius: 0px; background-color: #333; border: none; font-family: 'Rajdhani', sans-serif; font-weight: 700; text-transform: uppercase; font-size: 13px; letter-spacing: 0.5px; color: #fff; cursor: pointer; line-height: 1;">
+                    Cancel
+                </button>
+                <button type="button" onclick="updateAdminOrder()" class="btn btn-primary" style="height: 40px; padding: 0 20px; display: inline-flex; align-items: center; justify-content: center; border-radius: 0px; background-color: #f2a100; border: none; font-family: 'Rajdhani', sans-serif; font-weight: 700; text-transform: uppercase; font-size: 13px; letter-spacing: 0.5px; color: #fff; cursor: pointer; line-height: 1;">
+                    Save Updates
+                </button>
+                <span onclick="closeOrderModal()" class="pure-modal-close-label" style="margin-left: 15px; display: inline-flex; align-items: center; justify-content: center; height: 40px; line-height: 1; cursor: pointer; font-size: 24px; color: #333;">&times;</span>
+            </div>
+        </div>
+
+        <!-- Modal Body -->
+        <form action="#" onsubmit="return false;">
+            <div class="pure-modal-body" style="padding: 20px; max-height: 75vh; overflow-y: auto;">
+                <input type="hidden" id="manage-order-id">
+
+                <div class="row g-3">
+                    <!-- Customer Summary -->
+                    <div class="col-md-6">
+                        <div class="border p-3 h-100" style="background: #fafafa; border: 1px solid #e5e5e5;">
+                            <h6 style="font-family: 'Rajdhani', sans-serif; font-weight: 700; text-transform: uppercase; font-size: 13px; letter-spacing: 0.5px; color: #333; margin-bottom: 10px;">Customer Info</h6>
+                            <p class="mb-1" style="font-size: 13px;"><strong>Name:</strong> <span id="modal-customer-name">--</span></p>
+                            <p class="mb-1" style="font-size: 13px;"><strong>Email:</strong> <span id="modal-customer-email">--</span></p>
+                            <p class="mb-0" style="font-size: 13px;"><strong>Phone:</strong> <span id="modal-customer-phone">--</span></p>
+                        </div>
+                    </div>
+
+                    <!-- Shipping Address Summary -->
+                    <div class="col-md-6">
+                        <div class="border p-3 h-100" style="background: #fafafa; border: 1px solid #e5e5e5;">
+                            <h6 style="font-family: 'Rajdhani', sans-serif; font-weight: 700; text-transform: uppercase; font-size: 13px; letter-spacing: 0.5px; color: #333; margin-bottom: 10px;">Shipping Address</h6>
+                            <p class="mb-0" style="font-size: 13px; line-height: 1.5;" id="modal-shipping-address">--</p>
+                        </div>
+                    </div>
+
+                    <!-- Status Dropdown -->
+                    <div class="col-md-6">
+                        <label for="modal-order-status" class="admin-form-label" style="display: block; font-weight: 600; font-size: 13px; margin-bottom: 5px;">Order Status</label>
+                        <select class="admin-form-input form-control" id="modal-order-status" style="height: 40px; width: 100%; border: 1px solid #ddd; padding: 0 10px;">
+                            <option value="PENDING">Pending</option>
+                            <option value="PROCESSING">Processing</option>
+                            <option value="SHIPPED">Shipped</option>
+                            <option value="DELIVERED">Delivered</option>
+                            <option value="CANCELLED">Cancelled</option>
+                        </select>
+                    </div>
+
+                    <!-- Tracking Number -->
+                    <div class="col-md-6">
+                        <label for="modal-tracking-number" class="admin-form-label" style="display: block; font-weight: 600; font-size: 13px; margin-bottom: 5px;">Tracking Number</label>
+                        <input type="text" class="admin-form-input form-control" id="modal-tracking-number" placeholder="e.g. TRK-98234112" style="height: 40px; width: 100%; border: 1px solid #ddd; padding: 0 10px;">
+                    </div>
+
+                    <!-- Ordered Items List -->
+                    <div class="col-12">
+                        <label class="admin-form-label" style="display: block; font-weight: 600; font-size: 13px; margin-bottom: 5px;">Ordered Items</label>
+                        <div class="border" style="background: #fff; max-height: 180px; overflow-y: auto; border: 1px solid #e5e5e5;">
+                            <table class="table table-sm table-borderless mb-0" style="width: 100%; font-size: 13px; text-align: left;">
+                                <thead style="background: #f1f1f1; font-family: 'Rajdhani', sans-serif; font-weight: 700;">
+                                <tr>
+                                    <th style="padding: 8px 12px;">Item</th>
+                                    <th style="padding: 8px 12px; text-align: center;">Qty</th>
+                                    <th style="padding: 8px 12px; text-align: right;">Unit Price</th>
+                                    <th style="padding: 8px 12px; text-align: right;">Subtotal</th>
+                                </tr>
+                                </thead>
+                                <tbody id="modal-order-items-table">
+                                <!-- Items load dynamically -->
+                                <tr>
+                                    <td colspan="4" class="text-center py-3 text-muted">Loading items...</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Remarks & Total -->
+                    <div class="col-md-8">
+                        <label for="modal-order-notes" class="admin-form-label" style="display: block; font-weight: 600; font-size: 13px; margin-bottom: 5px;">Admin Notes</label>
+                        <textarea class="admin-form-input form-control" id="modal-order-notes" rows="2" placeholder="Optional notes..." style="width: 100%; border: 1px solid #ddd; padding: 8px 10px;"></textarea>
+                    </div>
+
+                    <div class="col-md-4 d-flex flex-column justify-content-end">
+                        <div class="border p-2 text-end" style="background: #fafafa; border: 1px solid #e5e5e5;">
+                            <span style="font-size: 11px; color: #777; text-transform: uppercase;">Total Amount:</span>
+                            <h4 style="margin: 0; color: #f2a100; font-family: 'Rajdhani', sans-serif; font-weight: 700;" id="modal-order-total">$0.00</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- JS
+============================================ -->
+<script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+<script src="assets/js/plugins/bootstrap.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/admin-dashboard.js"></script>
+<script src="assets/js/notiflix-aio-3.2.8.min.js"></script>
+
+</body>
+
+</html>

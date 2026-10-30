@@ -1,0 +1,49 @@
+/*--
+/*  4.4 - Call to Action CSS
+/*----------------------------------------*/
+
+// Call to Action
+.call-to-action{
+    background: #f1eee5;
+    height: 696px;
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    @media #{$large-mobile}{
+        height: 526px;
+    }
+}
+
+// Call to Action Content
+.call-to-action-content{
+    & .title{
+        color: #ffb300;
+        font-size: 72px;
+        font-weight: 500;
+        // font-family: $custom-font-family;
+
+        @media #{$large-mobile}{
+            font-size: 52px;
+        }
+        @media #{$small-mobile}{
+            font-size: 32px;
+        }
+    }
+    & p{
+        font-size: 24px;
+        font-weight: 400;
+        color: #313131;
+
+        @media #{$large-mobile}{
+            font-size: 20px;
+        }
+        @media #{$small-mobile}{
+            font-size: 16px;
+        }
+    }
+}
+
+

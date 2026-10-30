@@ -1,0 +1,54 @@
+/*--
+/*  4.5 - Benefit CSS
+/*----------------------------------------*/
+
+// Benefit Wrapper
+.benefit-wrapper{
+    margin-top: -30px;
+}
+
+
+// Single Benefit
+.single-benefit{
+    text-align: center;
+    border: 1px solid $primary;
+    padding: 60px 50px 55px;
+    margin-top: 30px;
+    transition: $transition-base;
+
+    @media #{$desktop-device, $small-mobile}{
+        padding: 40px 30px 35px;
+    }
+
+    & img{}
+    & .title{
+        font-size: 30px;
+        font-weight: 500;
+        color: #303030;
+        margin-top: 20px;
+        margin-bottom: 0;
+
+        @media #{$desktop-device, $small-mobile }{
+            font-size: 24px;
+        }
+    }
+    & p{
+        font-size: 14px;
+        color: #6a6a69;
+        line-height: 1.8;
+        margin-bottom: 0;
+        margin-top: 12px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+

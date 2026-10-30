@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Customer Engagement & LTV Report - Furbar Furniture eCommerce</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="Customer Engagement & Lifetime Value Report" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png" />
+
+    <!-- CSS
+	============================================ -->
+    <!-- Icon Font CSS -->
+    <link rel="stylesheet" href="assets/css/plugins/pe-icon-7-stroke.css" />
+    <link rel="stylesheet" href="assets/css/plugins/font-awesome.min.css" />
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="assets/css/plugins/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/plugins/animate.min.css" />
+
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="assets/css/style.min.css" />
+
+    <style>
+        body {
+            background-color: #f7f7f7;
+            font-family: "Rajdhani", sans-serif;
+            color: #333;
+            padding: 50px 0;
+        }
+
+        .report-card {
+            background: #fff;
+            padding: 50px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .report-header-title {
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #333;
+            font-size: 26px;
+            border-bottom: 2px solid #f2a100;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        .metric-card {
+            background: #fafafa;
+            padding: 20px;
+            border: 1px solid #eee;
+            text-align: center;
+            border-radius: 0px;
+        }
+
+        .metric-number {
+            font-size: 28px;
+            font-weight: 700;
+            color: #f2a100;
+            font-family: 'Rajdhani', sans-serif;
+            margin-bottom: 2px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #777;
+            letter-spacing: 0.5px;
+        }
+
+        .section-header {
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 16px;
+            color: #333;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        .table-report thead th {
+            background-color: #f8f9fa;
+            font-family: "Rajdhani", sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            color: #333;
+            border-bottom: 2px solid #ddd;
+            padding: 12px;
+        }
+
+        .table-report tbody td {
+            padding: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            border-bottom: 1px solid #eee;
+        }
+
+        .badge-status {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .bg-active {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .bg-vip {
+            background-color: #f2a100;
+            color: #fff;
+        }
+
+        .bg-inactive {
+            background-color: #6c757d;
+            color: #fff;
+        }
+
+        .actions-bar {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .btn-report {
+            height: 45px;
+            padding: 0 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none !important;
+        }
+
+        .btn-report-primary {
+            background-color: #f2a100;
+            color: #fff !important;
+            border: none;
+            box-shadow: 0 5px 15px rgba(242, 161, 0, 0.2);
+        }
+
+        .btn-report-primary:hover {
+            background-color: #333;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-report-secondary {
+            background-color: #333;
+            color: #fff !important;
+            border: none;
+        }
+
+        .btn-report-secondary:hover {
+            background-color: #f2a100;
+            transform: translateY(-2px);
+        }
+
+        .invoice-info-label {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #777;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+        }
+
+        .invoice-info-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* --- PRINT MEDIA STYLES (A4 Perfect Layout) --- */
+        @media print {
+            body {
+                background-color: #fff;
+                padding: 0;
+                color: #000;
+            }
+
+            .actions-bar,
+            footer {
+                display: none !important;
+            }
+
+            .report-card {
+                border: none;
+                box-shadow: none;
+                padding: 0;
+                width: 100%;
+            }
+
+            .metric-card {
+                background: #fff !important;
+                border: 1px solid #ddd !important;
+            }
+
+            .table-report th {
+                background-color: #f0f0f0 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-11">
+
+            <!-- Customer Engagement Report Panel -->
+            <div class="report-card" id="customers-report">
+
+                <!-- Report Header -->
+                <div class="row align-items-center mb-5">
+                    <div class="col-sm-6 text-center text-sm-start mb-3 mb-sm-0">
+                        <img src="assets/images/logo.png" width="154" height="46" alt="Furbar Logo">
+                    </div>
+                    <div class="col-sm-6 text-center text-sm-end">
+                        <h4 class="report-header-title">Customers Overview Report</h4>
+                    </div>
+                </div>
+
+                <!-- Meta details -->
+                <div class="row g-4 mb-5 border-top border-bottom py-4" style="background: #fafafa;">
+                    <div class="col-6 col-sm-3 text-center text-sm-start">
+                        <span class="invoice-info-label">Report Type</span>
+                        <div class="invoice-info-value">Customer Base & LTV Log</div>
+                    </div>
+                    <div class="col-6 col-sm-3 text-center text-sm-start">
+                        <span class="invoice-info-label">As of Date</span>
+                        <div class="invoice-info-value">May 30, 2026</div>
+                    </div>
+                    <div class="col-6 col-sm-3 text-center text-sm-start">
+                        <span class="invoice-info-label">Generated By</span>
+                        <div class="invoice-info-value">Relations Manager</div>
+                    </div>
+                    <div class="col-6 col-sm-3 text-center text-sm-start">
+                        <span class="invoice-info-label">Database Sync</span>
+                        <div class="invoice-info-value text-success"><i class="fa fa-check-circle"></i> Sync Operational</div>
+                    </div>
+                </div>
+
+                <!-- KPI Statistics Cards -->
+                <h5 class="section-header">Customer Growth & Engagement</h5>
+                <div class="row g-3 mb-5">
+                    <div class="col-6 col-md-3">
+                        <div class="metric-card">
+                            <div class="metric-number" id="rep-total-customers">0</div>
+                            <div class="metric-label">Total Customers</div>
+                            <small class="text-success fw-bold"><i class="fa fa-caret-up"></i> +12% YoY Growth</small>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="metric-card">
+                            <div class="metric-number" id="rep-active-customers">0</div>
+                            <div class="metric-label">Active Customers</div>
+                            <small class="text-success fw-bold"><i class="fa fa-caret-up"></i> <span id="rep-activity-rate">0.0</span>% Activity Rate</small>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="metric-card">
+                            <div class="metric-number" id="rep-new-customers">0</div>
+                            <div class="metric-label">New This Month</div>
+                            <small class="text-success fw-bold"><i class="fa fa-caret-up"></i> Avg <span id="rep-avg-per-day">0.0</span> / day</small>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="metric-card">
+                            <div class="metric-number" id="rep-avg-ltv">$0.00</div>
+                            <div class="metric-label">Avg. Lifetime Value (LTV)</div>
+                            <small class="text-success fw-bold"><i class="fa fa-caret-up"></i> +8.4% Spent Growth</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Customers Log -->
+                <h5 class="section-header">Top Customer & Lifetime Value Registry</h5>
+                <div class="table-responsive">
+                    <table class="table align-middle table-report">
+                        <thead>
+                        <tr>
+                            <th>Customer ID</th>
+                            <th>Customer Name</th>
+                            <th>Email Address</th>
+                            <th>Join Date</th>
+                            <th class="text-center" style="width: 150px;">Orders Placed</th>
+                            <th class="text-center" style="width: 150px;">Account Status</th>
+                            <th class="text-end" style="width: 180px;">Lifetime Spent (LTV)</th>
+                        </tr>
+                        </thead>
+                        <tbody id="customer-report-table-body">
+<!--                        <tr>-->
+<!--                            <td>#CUST-101</td>-->
+<!--                            <td><strong>John Smith</strong></td>-->
+<!--                            <td>john@example.com</td>-->
+<!--                            <td>Oct 12, 2023</td>-->
+<!--                            <td class="text-center">12</td>-->
+<!--                            <td class="text-center"><span class="badge-status bg-vip">VIP</span></td>-->
+<!--                            <td class="text-end">$2,450.00</td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <td>#CUST-102</td>-->
+<!--                            <td><strong>Sarah Wilson</strong></td>-->
+<!--                            <td>sarah@example.com</td>-->
+<!--                            <td>Oct 13, 2023</td>-->
+<!--                            <td class="text-center">05</td>-->
+<!--                            <td class="text-center"><span class="badge-status bg-active">Active</span></td>-->
+<!--                            <td class="text-end">$890.00</td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <td>#CUST-103</td>-->
+<!--                            <td><strong>Donna Paulsen</strong></td>-->
+<!--                            <td>donna@example.com</td>-->
+<!--                            <td>Oct 15, 2023</td>-->
+<!--                            <td class="text-center">00</td>-->
+<!--                            <td class="text-center"><span class="badge-status bg-inactive">Inactive</span></td>-->
+<!--                            <td class="text-end">$0.00</td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <td>#CUST-104</td>-->
+<!--                            <td><strong>Michael Ross</strong></td>-->
+<!--                            <td>michael@example.com</td>-->
+<!--                            <td>Oct 18, 2023</td>-->
+<!--                            <td class="text-center">08</td>-->
+<!--                            <td class="text-center"><span class="badge-status bg-vip">VIP</span></td>-->
+<!--                            <td class="text-end">$1,750.00</td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <td>#CUST-105</td>-->
+<!--                            <td><strong>John Doe</strong></td>-->
+<!--                            <td>johndoe@example.com</td>-->
+<!--                            <td>Oct 20, 2023</td>-->
+<!--                            <td class="text-center">03</td>-->
+<!--                            <td class="text-center"><span class="badge-status bg-active">Active</span></td>-->
+<!--                            <td class="text-end">$340.00</td>-->
+<!--                        </tr>-->
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <!-- Actions buttons bar -->
+            <div class="actions-bar">
+                <a href="admin_dashboard.html" class="btn-report btn-report-secondary"><i class="fa fa-arrow-left me-2"></i> Back to Dashboard</a>
+                <button onclick="window.print()" class="btn-report btn-report-primary"><i class="fa fa-print me-2"></i> Print & Download PDF Report</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="assets/js/admin-dashboard.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", async function () {
+        try {
+            console.log("Report page loaded! Fetching data...");
+            const response = await fetch('api/admin-profile/customers');
+            if (response.ok) {
+                const data = await response.json();
+                if(data.status) {
+                    renderCustomersReport(data.customers);
+                }
+            }
+        } catch (e) {
+            console.error("Error loading report page:", e);
+        }
+    });
+</script>
+
+</body>
+
+</html>

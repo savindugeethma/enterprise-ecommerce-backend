@@ -1,0 +1,179 @@
+/*--
+/*  3.4 - Off Canvas CSS
+/*----------------------------------------*/
+
+
+// oFF Canvas Box
+.offcanvas{
+    width: 320px;   
+    z-index: 1060; 
+}
+
+.offcanvas-header {
+    flex-direction: column;
+    padding: 0;
+}
+
+// Canvas Action
+.canvas-action{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    border-bottom: 1px solid #ebebeb;
+    width: 100%;
+
+    & .action{
+        font-weight: 400;
+        color: $black;
+        background: transparent;
+        text-shadow: none;
+        cursor: pointer;
+        line-height: 20px;
+        font-size: 13px;
+        display: inline-block;
+        text-transform: capitalize;  
+        text-decoration: none;    
+        margin: 0 15px;  
+        transition: all 0.3s linear;
+
+        &:hover{
+            color: $primary;
+        }
+    }
+}
+
+// Canvas Close Bar
+.canvas-close-bar{
+    background-color: $secondary;
+    color: $white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+
+    & span{}
+    & button{
+        text-decoration: none;
+        color: $white;
+        font-size: 30px;
+        background: none;
+        padding: 0;
+        height: 40px;
+        border: 0;
+
+        & i{
+            
+        }
+    }
+}
+
+.offcanvas-body {
+    padding: 0;
+}
+
+// Canvas Menu 
+.canvas-menu{
+    padding-bottom: 30px;
+
+    & ul{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        & li{
+            position: relative !important;
+            display: block;
+            line-height: 1;            
+
+            & a{
+                display: block;
+                color: #383838;
+                font-size: 14px;
+                font-weight: 500;
+                padding: 5px 20px;
+                padding-right: 50px;
+                line-height: 30px;
+                text-transform: capitalize;
+                border-top: 1px solid #ebebeb;
+                text-decoration: none;
+
+                & img{
+                    margin-right: 5px;
+                }
+            }
+
+            & .mobile-menu-expand {
+                width: 16px;
+                height: 16px;
+                position: absolute;
+                top: 13px;
+                right: 21px;
+                cursor: pointer;
+
+                &::before{
+                    position: absolute;
+                    content: '';
+                    width: 12px;
+                    height: 2px;
+                    background-color: #383838;
+                    top: 7px;
+                    left: 2px;
+                }
+                &::after{
+                    position: absolute;
+                    content: '';
+                    width: 2px;
+                    height: 12px;
+                    background-color: #383838;
+                    left: 7px;
+                    bottom: 2px;
+                    transition: all 0.1s linear;
+                }
+            }
+            &.active-expand{
+                & > .mobile-menu-expand {
+                    &::after{
+                        height: 0;
+                    }
+                }
+            }
+
+            & ul{
+                & li{
+                    & a{
+                        padding-left: 11%;
+                    }
+                    & ul{
+                        & li{
+                            & a{
+                                padding-left: 16%;
+                            }
+                            & ul{
+                                & li{
+                                    & a{
+                                        padding-left: 21%;
+                                    }
+                                    & ul{
+                                        & li{
+                                            & a{
+                                                padding-left: 26%;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

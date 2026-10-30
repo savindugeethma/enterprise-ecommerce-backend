@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Order Payment Failed - Furbar Furniture eCommerce</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="Order Payment Failed" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png" />
+
+    <!-- CSS
+	============================================ -->
+    <!-- Icon Font CSS -->
+    <link rel="stylesheet" href="assets/css/plugins/pe-icon-7-stroke.css" />
+    <link rel="stylesheet" href="assets/css/plugins/font-awesome.min.css" />
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="assets/css/plugins/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/plugins/animate.min.css" />
+
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="assets/css/style.min.css" />
+
+    <style>
+        body {
+            background-color: #f7f7f7;
+            font-family: "Rajdhani", sans-serif;
+            color: #333;
+            padding: 50px 0;
+        }
+
+        .fail-header-card {
+            background: #fff;
+            padding: 40px;
+            text-align: center;
+            border-bottom: 3px solid #dc3545;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .fail-icon-box {
+            width: 80px;
+            height: 80px;
+            background: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 38px;
+            margin: 0 auto 20px;
+            animation: bounceIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .invoice-card {
+            background: #fff;
+            padding: 50px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .invoice-header-title {
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #333;
+            font-size: 28px;
+            border-bottom: 2px solid #dc3545;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        .invoice-info-label {
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 13px;
+            color: #777;
+            letter-spacing: 0.5px;
+        }
+
+        .invoice-info-value {
+            font-size: 15px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .address-box {
+            background: #fafafa;
+            padding: 25px;
+            border: 1px solid #eee;
+            height: 100%;
+        }
+
+        .address-title {
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            color: #333;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+        }
+
+        .table-invoice thead th {
+            background-color: #f8f9fa;
+            font-family: "Rajdhani", sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            color: #333;
+            border-bottom: 2px solid #ddd;
+            padding: 12px;
+        }
+
+        .table-invoice tbody td {
+            padding: 15px 12px;
+            font-size: 15px;
+            font-weight: 500;
+            border-bottom: 1px solid #eee;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .summary-table {
+            width: 300px;
+        }
+
+        .summary-table td {
+            padding: 8px 12px;
+            font-size: 15px;
+        }
+
+        .summary-table td.label-cell {
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #777;
+            text-align: right;
+        }
+
+        .summary-table td.value-cell {
+            font-weight: 600;
+            text-align: right;
+            color: #333;
+        }
+
+        .summary-table tr.total-row td {
+            border-top: 2px solid #ddd;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .summary-table tr.total-row td.value-cell {
+            color: #dc3545;
+        }
+
+        .actions-bar {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .btn-invoice {
+            height: 45px;
+            padding: 0 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none !important;
+        }
+
+        .btn-invoice-primary {
+            background-color: #f2a100;
+            color: #fff !important;
+            border: none;
+            box-shadow: 0 5px 15px rgba(242, 161, 0, 0.2);
+        }
+
+        .btn-invoice-primary:hover {
+            background-color: #333;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-invoice-secondary {
+            background-color: #333;
+            color: #fff !important;
+            border: none;
+        }
+
+        .btn-invoice-secondary:hover {
+            background-color: #f2a100;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+
+            <!-- Failure Alert Header -->
+            <div class="fail-header-card">
+                <div class="fail-icon-box">
+                    <i class="fa fa-times"></i>
+                </div>
+                <h2 style="font-weight: 700; text-transform: uppercase; color: #dc3545;">Payment Transaction Failed!</h2>
+                <p class="mb-0 text-muted">We could not process your transaction. Your cart items are safe, and no funds were debited from your card.</p>
+            </div>
+
+            <!-- Invoice Report Panel (Attempts Detail) -->
+            <div class="invoice-card">
+
+                <!-- Logo and Report Title -->
+                <div class="row align-items-center mb-5">
+                    <div class="col-sm-6 text-center text-sm-start mb-3 mb-sm-0">
+                        <img src="assets/images/logo.png" width="154" height="46" alt="Furbar Logo">
+                    </div>
+                    <div class="col-sm-6 text-center text-sm-end">
+                        <h4 class="invoice-header-title" style="border-bottom-color: #dc3545;">Transaction Receipt</h4>
+                    </div>
+                </div>
+
+                <!-- Metadata -->
+                <div class="row g-4 mb-5 border-top border-bottom py-4" style="background: #fafafa;">
+                    <div class="col-6 col-sm-3 text-center text-sm-start">
+                        <span class="invoice-info-label">Transaction Ref</span>
+                        <div class="invoice-info-value">#FUR-2026-98745-F</div>
+                    </div>
+                    <div class="col-6 col-sm-3 text-center text-sm-start">
+                        <span class="invoice-info-label">Date & Time</span>
+                        <div class="invoice-info-value">May 30, 2026</div>
+                    </div>
+                    <div class="col-6 col-sm-3 text-center text-sm-start">
+                        <span class="invoice-info-label">Reason</span>
+                        <div class="invoice-info-value text-danger" style="font-size: 13px;">Insufficient Funds / Card Declined</div>
+                    </div>
+                    <div class="col-6 col-sm-3 text-center text-sm-start">
+                        <span class="invoice-info-label">Payment Status</span>
+                        <div class="invoice-info-value text-danger"><i class="fa fa-circle"></i> Rejected</div>
+                    </div>
+                </div>
+
+                <!-- Addresses -->
+                <div class="row g-4 mb-5">
+                    <div class="col-md-6">
+                        <div class="address-box">
+                            <h5 class="address-title">Billing Address</h5>
+                            <div class="invoice-info-value mb-1">Donna Paulsen</div>
+                            <div class="text-muted" style="font-size: 14px; line-height: 1.5;">
+                                donna@example.com<br>
+                                +94 77 123 4567<br>
+                                120 Galle Road, Colpetty,<br>
+                                Colombo 00300, Sri Lanka
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="address-box">
+                            <h5 class="address-title">Shipping Address</h5>
+                            <div class="invoice-info-value mb-1">Donna Paulsen</div>
+                            <div class="text-muted" style="font-size: 14px; line-height: 1.5;">
+                                120 Galle Road, Colpetty,<br>
+                                Colombo 00300, Sri Lanka<br>
+                                <span class="fw-bold mt-2 d-inline-block text-dark">Method: Courier Express Delivery</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Items Table -->
+                <h5 class="mb-3" style="font-family: 'Rajdhani', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Pending Items in Cart</h5>
+                <div class="table-responsive mb-4">
+                    <table class="table align-middle table-invoice">
+                        <thead>
+                        <tr>
+                            <th style="width: 80px;">Image</th>
+                            <th>Product Name</th>
+                            <th>Category</th>
+                            <th class="text-center" style="width: 100px;">Qty</th>
+                            <th class="text-end" style="width: 120px;">Unit Price</th>
+                            <th class="text-end" style="width: 120px;">Total</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><img src="assets/images/product/product-1.jpg" width="50" alt="" class="border"></td>
+                            <td>
+                                <div class="fw-bold">Modern Living Chair</div>
+                                <small class="text-muted">Model: MLC-2023 | Colour: Amber Yellow</small>
+                            </td>
+                            <td>Furniture</td>
+                            <td class="text-center">1</td>
+                            <td class="text-end">$120.00</td>
+                            <td class="text-end">$120.00</td>
+                        </tr>
+                        <tr>
+                            <td><img src="assets/images/product/product-2.jpg" width="50" alt="" class="border"></td>
+                            <td>
+                                <div class="fw-bold">Herman Arm Chair</div>
+                                <small class="text-muted">Model: HAC-509 | Colour: Charcoal Grey</small>
+                            </td>
+                            <td>Furniture</td>
+                            <td class="text-center">1</td>
+                            <td class="text-end">$150.00</td>
+                            <td class="text-end">$150.00</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Calculations Summary -->
+                <div class="summary-row">
+                    <div class="summary-table">
+                        <table class="table table-borderless mb-0">
+                            <tr>
+                                <td class="label-cell">Subtotal</td>
+                                <td class="value-cell">$270.00</td>
+                            </tr>
+                            <tr>
+                                <td class="label-cell">Shipping Fee</td>
+                                <td class="value-cell">$15.00</td>
+                            </tr>
+                            <tr>
+                                <td class="label-cell text-danger">Coupon (FURBAR10)</td>
+                                <td class="value-cell text-danger">-$27.00</td>
+                            </tr>
+                            <tr class="total-row">
+                                <td class="label-cell">Total Amount</td>
+                                <td class="value-cell">$258.00</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Actions buttons bar -->
+            <div class="actions-bar">
+                <a href="index.html" class="btn-invoice btn-invoice-secondary"><i class="fa fa-home me-2"></i> Back to Home</a>
+                <a href="checkout.html" class="btn-invoice btn-invoice-primary"><i class="fa fa-refresh me-2"></i> Try Payment Again / Pay Now</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

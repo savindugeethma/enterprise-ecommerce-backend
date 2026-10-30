@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Unauthorized Access - Furbar Furniture eCommerce</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="Unauthorized Access Page" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png" />
+
+    <!-- CSS
+	============================================ -->
+    <!-- Icon Font CSS -->
+    <link rel="stylesheet" href="assets/css/plugins/pe-icon-7-stroke.css" />
+    <link rel="stylesheet" href="assets/css/plugins/font-awesome.min.css" />
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="assets/css/plugins/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/plugins/animate.min.css" />
+
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="assets/css/style.min.css" />
+
+    <style>
+        body {
+            background-color: #fafafa;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Rajdhani", sans-serif;
+        }
+
+        .unauthorized-card {
+            background: #fff;
+            padding: 50px 40px;
+            border-radius: 0px;
+            border: 1px solid #e0e0e0;
+            border-top: 5px solid #f2a100;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            animation: cardSlideIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes cardSlideIn {
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .icon-box {
+            width: 100px;
+            height: 100px;
+            background: rgba(242, 161, 0, 0.1);
+            color: #f2a100;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 45px;
+            margin: 0 auto 30px;
+            position: relative;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(242, 161, 0, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 20px rgba(242, 161, 0, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(242, 161, 0, 0);
+            }
+        }
+
+        .unauthorized-card h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .unauthorized-card p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 35px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 500;
+        }
+
+        .btn-login {
+            background-color: #f2a100;
+            color: #fff !important;
+            border: none;
+            border-radius: 0px;
+            padding: 12px 35px;
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(242, 161, 0, 0.2);
+        }
+
+        .btn-login i {
+            margin-right: 8px;
+            font-size: 14px;
+        }
+
+        .btn-login:hover {
+            background-color: #333;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="unauthorized-card">
+    <div class="icon-box">
+        <i class="pe-7s-lock"></i>
+    </div>
+    <h2>Access Denied</h2>
+    <p>Oops! You do not have permission to access this dashboard page. You must authenticate and login to continue.</p>
+    <a href="login.html" class="btn-login">
+        <i class="fa fa-sign-in"></i> Please Login First
+    </a>
+</div>
+
+</body>
+
+</html>
