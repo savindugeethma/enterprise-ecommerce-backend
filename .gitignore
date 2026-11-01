@@ -84,6 +84,7 @@ build/
 ### Sensitive Credentials & Configs ###
 src/main/resources/env.properties
 src/main/resources/hibernate.cfg.xml
+src/main/resources/app.properties
 
 ### Embedded Tomcat Runtime ###
 tomcat.*/
