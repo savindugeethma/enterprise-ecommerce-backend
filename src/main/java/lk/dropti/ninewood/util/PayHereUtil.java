@@ -7,8 +7,9 @@ import java.util.Locale;
 
 public class PayHereUtil {
 
-    private static final String MERCHANT_ID = "1231403";
-    private static final String MERCHANT_SECRET = "MjIyNTA3MDU2MzYzNTQxMTcwNDE1MDQ3NzA3OTMzNTA3NjU4MzM0";
+//    private static final String MERCHANT_ID = "1231403";
+    private static final String MERCHANT_ID = Env.get("payhere.merchant.id");
+    private static final String MERCHANT_SECRET = Env.get("payhere.merchant.secret");
 
     public static final String APP_CURRENCY = "LKR";
 

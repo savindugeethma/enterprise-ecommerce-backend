@@ -79,3 +79,13 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+
+### Sensitive Credentials & Configs ###
+src/main/resources/env.properties
+src/main/resources/hibernate.cfg.xml
+
+### Embedded Tomcat Runtime ###
+tomcat.*/
+tomcat.8080/
+tomcat.8081/
